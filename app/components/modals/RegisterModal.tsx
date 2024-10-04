@@ -13,6 +13,7 @@ import Input from "../input/Input";
 import Button from "../Button";
 import { FcGoogle } from "react-icons/fc";
 import { AiFillGithub } from "react-icons/ai";
+import { signIn } from "next-auth/react";
 
 const RegisterModal = () => {
   const registerModal = useRegisterModal();
@@ -86,7 +87,7 @@ const RegisterModal = () => {
     <div className="flex flex-col gap-2 mt-2">
       <hr />
       <Button outline label="Continue with Google" icon={FcGoogle} onClick={() => {}} />
-      <Button outline label="Continue with Github" icon={AiFillGithub} onClick={() => {}} />
+      <Button outline label="Continue with Github" icon={AiFillGithub} onClick={() => signIn("github")} />
       <div className="text-neutral-500 text-center mt-2 font-light">
         <div className="flex justify-center gap-2">
           <div>Already have an account?</div>

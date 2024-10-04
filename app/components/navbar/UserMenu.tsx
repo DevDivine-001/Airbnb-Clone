@@ -6,13 +6,14 @@ import Avatar from "../Avatar"
 import MenuItem from "./MenuItem"
 import useRegisterModal from "../hooks/useRegisterModal"
 import useLoginModal from "../hooks/useLoginModal"
-import { User } from "@prisma/client"
 import { signOut } from "next-auth/react"
+import { SafeUser } from "@/app/types/inex"
+// import { User } from "@prisma/client"
 // import useRegisterModal from "../hooks/useRegisterModal"
 // import useLoginModal from "../hooks/useRegisterModal"
 
 interface UserMenuProps{
-  currentUser?: User | null
+  currentUser?: SafeUser | null
 }
 
 const UserMenu: React.FC<UserMenuProps> = ({
@@ -72,7 +73,7 @@ setIsOpen((value) =>!value)
               className="hidden
 md:block"
             >
-              <Avatar />
+              <Avatar src={currentUser?.image}/>
             </div>
           </div>
 
