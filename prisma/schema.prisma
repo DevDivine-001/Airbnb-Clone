@@ -13,72 +13,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// model User {
-//   id             String    @id @default(auto()) @map("_id") @db.ObjectId
-//   name           String?   @unique
-//   email          String?   @unique
-//   emailVerified  DateTime?
-//   image          String?
-//   hashedPassword String?
-//   created        DateTime  @default(now())
-//   updatedAt      DateTime  @updatedAt
-//   favoriteIds    String[]  @db.ObjectId
-
-//   acounts      Account[]
-//   listing      Listing[]
-//   reservations Reservation[]
-// }
-
-// model Account {
-//   id               String  @id @default(auto()) @map("_id") @db.ObjectId
-//   userId           String  @db.ObjectId
-//   type             String
-//   provider         String
-//   providerAccontId String
-//   refresh_token    String? @db.String
-//   access_token     String? @db.String
-//   expires_at       Int?
-//   token_type       String?
-//   scope            String?
-//   id_token         String? @db.String
-//   session_state    String?
-
-//   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-//   @@unique([provider, providerAccontId])
-// }
-
-// model Listing {
-//   id            String   @id @default(auto()) @map("_id") @db.ObjectId
-//   title         String
-//   description   String
-//   imageSrc      String
-//   createdAt     DateTime @default(now())
-//   category      String
-//   roomCount     Int
-//   bathroomCount Int
-//   guestCount    Int
-//   locationValue String
-//   userId        String   @db.ObjectId
-//   price         Int
-
-//   user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
-//   reservations Reservation[]
-// }
-
-// model Reservation {
-//   id         String   @id @default(auto()) @map("_id") @db.ObjectId
-//   userId     String   @db.ObjectId
-//   listingId  String   @db.ObjectId
-//   startDate  DateTime
-//   endDate    DateTime
-//   totalPrice Int
-//   createdAt  DateTime @default(now())
-
-//   user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-//   listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
-// }
-
 model User {
   id             String    @id @default(auto()) @map("_id") @db.ObjectId
   name           String?   @unique
@@ -96,7 +30,7 @@ model User {
 }
 
 model Account {
-  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  id                String  @id @default(cuid()) @map("_id") @db.ObjectId
   userId            String  @db.ObjectId
   type              String
   provider          String
@@ -113,6 +47,24 @@ model Account {
 
   @@unique([provider, providerAccountId])
 }
+
+// model Account {
+//   id                 String   @id @default(cuid())
+//   userId             String
+//   provider           String
+//   providerAccountId  String
+//   refresh_token      String?  @db.Text
+//   access_token       String?  @db.Text
+//   expires_at         Int?
+//   token_type         String?
+//   scope              String?
+//   id_token           String?
+//   session_state      String?
+
+//   user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+//   @@unique([provider, providerAccountId]) // Ensure this line exists
+// }
 
 model Listing {
   id            String   @id @default(auto()) @map("_id") @db.ObjectId

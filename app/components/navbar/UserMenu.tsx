@@ -7,13 +7,14 @@ import MenuItem from "./MenuItem"
 import useRegisterModal from "../hooks/useRegisterModal"
 import useLoginModal from "../hooks/useLoginModal"
 import { signOut } from "next-auth/react"
-import { SafeUser } from "@/app/types/inex"
+// import { SafeUser } from "@/app/types/inex"
+import { User } from "@prisma/client"
 // import { User } from "@prisma/client"
 // import useRegisterModal from "../hooks/useRegisterModal"
 // import useLoginModal from "../hooks/useRegisterModal"
 
 interface UserMenuProps{
-  currentUser?: SafeUser | null
+  currentUser?: User | null
 }
 
 const UserMenu: React.FC<UserMenuProps> = ({
