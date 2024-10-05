@@ -1,11 +1,10 @@
 'use client'
-
-
-
 import axios from "axios";
 import { toast } from "react-hot-toast"; // For notifications
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
-import { useCallback, useState } from "react";
+import { 
+  // useCallback, 
+  useState } from "react";
 import useRegisterModal from "../hooks/useRegisterModal";
 import Modal from "./Modal";
 import Heading from "../Heading";
@@ -86,10 +85,15 @@ const RegisterModal = () => {
   const footerContent = (
     <div className="flex flex-col gap-2 mt-2">
       <hr />
-      <Button outline label="Continue with Google" icon={FcGoogle} onClick={() => {}} />
-      <Button outline label="Continue with Github" icon={AiFillGithub} onClick={() => 
-        signIn("github")
-        } />
+      <Button outline 
+      label="Continue with Google" 
+      icon={FcGoogle} 
+      onClick={() => {}} />
+      <Button outline 
+      label="Continue with Github" 
+      icon={AiFillGithub} 
+      onClick={() => signIn("github")} />
+
       <div className="text-neutral-500 text-center mt-2 font-light">
         <div className="flex justify-center gap-2">
           <div>Already have an account?</div>
@@ -116,4 +120,3 @@ const RegisterModal = () => {
 };
 
 export default RegisterModal;
-

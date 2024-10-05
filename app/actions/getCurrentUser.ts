@@ -4,7 +4,6 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]"
 import prisma from "@/app/libs/primadb"
 
 
-
 export const getSession = async () => {
     return await getServerSession(authOptions)
 }

@@ -1,7 +1,3 @@
-
-
-
-
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import NextAuth from "next-auth/next"
 import { AuthOptions } from "next-auth"
