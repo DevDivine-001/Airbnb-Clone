@@ -35,7 +35,11 @@ const nextConfig = {
             {
                 protocol: 'https',
                 hostname: 'avatars.githubusercontent.com',
-                hostname: 'avatars.githubusercontent.com',
+                pathname: '/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'lh3.googleusercontent.com', // Add this entry for Google Images
                 pathname: '/**',
             },
         ],
@@ -43,3 +47,4 @@ const nextConfig = {
 };
 
 export default nextConfig;
+
