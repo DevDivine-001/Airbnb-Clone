@@ -32,6 +32,7 @@ const Categories = () => {
         pt-4
         flex
         flex-row
+        text-sm
         items-center
         justify-between
         overflow-x-auto'>
