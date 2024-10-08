@@ -4,6 +4,7 @@ import {signIn} from "next-auth/react"
 import { AiFillGithub } from "react-icons/ai"
 import { FcGoogle } from "react-icons/fc"
 import { 
+  useCallback,
   // useCallback,
    useState } from "react"
 import {
@@ -61,6 +62,8 @@ const LoginModal = () => {
       }
     })
 
+
+
     // axios.post('/api/register', data).then(() =>{
     //   registerModal.onClose()
     // }).catch((error) =>{
@@ -71,6 +74,13 @@ const LoginModal = () => {
     // })
     
   }
+
+      const toggle = useCallback(() =>{
+      loginModal.onClose()
+      registerModal.onOpen()
+    }, [loginModal, registerModal])
+
+    
   const bodyContent = (
     <div className="flex flex-col gap-2">
       <Heading 
@@ -127,7 +137,7 @@ const LoginModal = () => {
             Already have an account
           </div>
           <div
-          onClick={registerModal.onClose}
+          onClick={toggle}
           className="
           text-neutral-800
           cursor-pointer

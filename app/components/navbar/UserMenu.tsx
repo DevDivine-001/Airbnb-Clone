@@ -8,7 +8,7 @@ import useRegisterModal from "../hooks/useRegisterModal"
 import useLoginModal from "../hooks/useLoginModal"
 import { signOut } from "next-auth/react"
 import { User } from "@prisma/client"
-import { SafeUser } from "@/app/types/inex"
+// import { SafeUser } from "@/app/types/inex"
 // import { User } from "@prisma/client"
 // import useRegisterModal from "../hooks/useRegisterModal"
 // import useLoginModal from "../hooks/useRegisterModal"
@@ -27,13 +27,19 @@ const UserMenu: React.FC<UserMenuProps> = ({
     const toggleOpen = useCallback(() =>{
 setIsOpen((value) =>!value)
     },[] )
+
+    const onRent = useCallback(() =>{
+      if(!currentUser){
+        return loginModal.onOpen()
+      }
+    }, [currentUser, loginModal]) 
   return (
     <div className="relative">
         <div    className=" flex flex-row
             items-center
             gap-3">
                 <div
-                onClick={() =>{}}
+                onClick={onRent}
                 className="
             hidden
             md:block
