@@ -6,6 +6,7 @@ import { useState} from "react"
 import Heading from '../Heading' 
 import {categories} from '../navbar/Categories'
 import CategroyInput from '../input/CategroyInput'
+import { FieldValues, useForm } from 'react-hook-form'
 
 enum STEPS {
     CATEGORY = 0,
@@ -20,9 +21,46 @@ enum STEPS {
 
 const RentModal = () => {
 
+
     const rentModal = useRentModal();
 
     const [ step, SetStep] = useState(STEPS.CATEGORY);
+
+    const {
+        register,
+        handleSubmit,
+        setValue,
+        watch,
+        formState:{
+            errors,
+        },
+        reset
+    } = useForm<FieldValues>({
+        defaultValues:{
+            category:"",
+            location: null,
+            guestCount: 1,
+            roomCount: 1,
+            bathroomCount: 1,
+            imageSrc: "",
+            price: 1,
+            title: "",
+            description: ''
+
+        }
+    })
+
+    const category = watch('category')
+
+    const setCustomValue = (id: string, value:any) =>{
+        setValue(id, value, {
+            shouldDirty: true,
+            shouldTouch: true,
+            shouldValidate: true
+        })
+    }
+
+
 
     const onBack = () =>{
        SetStep((value) => value - 1)
@@ -70,8 +108,8 @@ const RentModal = () => {
                     <div key={item.label}
                     className='col-span-1'>
                        <CategroyInput
-                       onClick={() => {}}
-                       selected={false}
+                       onClick={(category) => setCustomValue('category' ,category)}
+                       selected={category === item.label}
                        label={item.label}
                        icon={item.icon}
                        
@@ -79,16 +117,24 @@ const RentModal = () => {
 
                     </div>
                 ))}
-
             </div>
         </div>
-    ) 
+
+) 
+        if(step === STEPS.LOCATION){
+            bodyContent = (
+                <div>
+                    Location Step!
+                </div>
+            )
+
+        }
   return (
     <>
     <Modal
     isOpen={rentModal.isOpen}
     onClose={rentModal.onClose}
-    onSubmit={rentModal.onClose}
+    onSubmit={onNext}
     actionLabel={actionLabel}
     secondaryActionLabel={secondaryActionLabel}
     secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
