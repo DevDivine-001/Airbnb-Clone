@@ -49,8 +49,9 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
         flex-col
         items-center
         justify-center
-        gap-1
-        p-0
+        gap-2
+        pr-3
+        pl-3
         border-b-2
         hover:text-neutral-800
         transition
