@@ -7,6 +7,7 @@ import Heading from '../Heading'
 import {categories} from '../navbar/Categories'
 import CategroyInput from '../input/CategroyInput'
 import { FieldValues, useForm } from 'react-hook-form'
+import CountrySelect from '../input/CountrySelect'
 
 enum STEPS {
     CATEGORY = 0,
@@ -123,8 +124,17 @@ const RentModal = () => {
 ) 
         if(step === STEPS.LOCATION){
             bodyContent = (
-                <div>
-                    Location Step!
+                <div
+                className='
+                flex
+                flex-col
+                gap-8'>
+                   <Heading
+                   title='Where is your place located'
+                   subtitle='Help guests fin you!'
+                   />
+
+                   <CountrySelect/>
                 </div>
             )
 
@@ -140,8 +150,6 @@ const RentModal = () => {
     secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
     title='Airbnb your home!'
     body={bodyContent}
-
-    
     />
         
     </>
