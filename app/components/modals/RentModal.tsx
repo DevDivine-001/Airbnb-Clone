@@ -10,6 +10,7 @@ import { FieldValues, useForm } from 'react-hook-form'
 import CountrySelect from '../input/CountrySelect'
 import Map from '../Map'
 import dynamic from 'next/dynamic'
+import Counter from '../input/Counter'
 
 enum STEPS {
     CATEGORY = 0,
@@ -159,6 +160,7 @@ const RentModal = () => {
                     title='Share some basics about your place'
                     subtitle='What amenities about your place'
                     />
+                    <Counter/>
                 </div>
             )
 
