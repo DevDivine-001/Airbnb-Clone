@@ -160,7 +160,8 @@ const RentModal = () => {
                     title='Share some basics about your place'
                     subtitle='What amenities about your place'
                     />
-                    <Counter/>
+                    <Counter title='Number of guests'
+                    subtitle='How many guests'/>
                 </div>
             )
 
