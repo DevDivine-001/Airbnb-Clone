@@ -9,7 +9,7 @@ import ToasterProvider from "./providers/ToasterProvider";
 import LoginModal from "./components/modals/LoginModal";
 import getCurrentUser from "./actions/getCurrentUser";
 import RentModal from "./components/modals/RentModal";
-import Openpages from "./components/Openpages";
+// import Openpages from "./components/Openpages";
 
 
 
