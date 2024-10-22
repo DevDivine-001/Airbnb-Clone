@@ -8,7 +8,6 @@ import {categories} from '../navbar/Categories'
 import CategroyInput from '../input/CategroyInput'
 import { FieldValues, useForm } from 'react-hook-form'
 import CountrySelect from '../input/CountrySelect'
-import Map from '../Map'
 import dynamic from 'next/dynamic'
 import Counter from '../input/Counter'
 import ImageUpload from '../input/ImageUpload'
@@ -60,6 +59,7 @@ const RentModal = () => {
     const guestCount = watch('guestCount')
     const roomCount = watch('roomCount')
     const bathroomCount = watch('bathroomCount')
+    const imageSrc = watch('imageSrc')
 
     const Map = useMemo(() => dynamic(() => import('../Map'), {
         ssr: false
@@ -194,7 +194,12 @@ const RentModal = () => {
                     subtitle='Show guests what your place looks like!'
                     
                     />
-                    <ImageUpload/>
+                    <ImageUpload
+                     value={imageSrc}
+                    onChange={(value) => setCustomValue('imageSrc', value)}
+                    
+                    
+                    />
                 </div>
             )
 

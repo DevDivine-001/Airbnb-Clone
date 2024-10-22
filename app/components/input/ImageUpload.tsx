@@ -1,154 +1,96 @@
-'use clients'
-import React from 'react'
+'use client'
 
-import { CldUploadWidget} from "next-cloudinary"
-import Image from "next/image"
-import { useCallback } from "react"
-import { TbPhotoPlus } from "react-icons/tb"
-
+import { CldUploadWidget } from 'next-cloudinary';
+import React, { useState } from 'react';
+import Image from 'next/image';
+import { TbPhotoPlus } from 'react-icons/tb';
 declare global {
-  var cloudinary : any;
+  var cloudinary: any;
 }
-
-interface ImageUploadProps{
-  onChange : (value: string) => void
-  value: string
+interface ImageUploadProps {
+  onChange: (value: string) => void;
+  value: string;
 }
 
 const ImageUpload:React.FC<ImageUploadProps> = ({
   onChange,
-  value
+  value,
+  
 }) => {
+  const [resource, setResource] = useState<any>(null); // State to hold the uploaded image data
 
-  const handleUpload = useCallback((result:any) =>{
-    onChange(result.info.secure_url)
-  }, [onChange])
   return (
-    <CldUploadWidget
-    onUpload={handleUpload}
-    uploadPreset='dzbm3p1y'
-    options={{
-      maxFiles:1
-    }}
-    >
-      {({open}) =>{
-        return(
-          <div
-          onClick={() => open?.()}
-          className='
-          relative
-          cursor-pointer
-          transition
-          border-dashed
-          border-2
-          p-20
-          border-neutral-300
-          flex
-          flex-col
-          justify-center
-          items-center
-          gap-4
-          text-neutral-600'
-          >
-            <TbPhotoPlus size={50}/>
+    <div>
+      <CldUploadWidget
+        uploadPreset="dzbm3p1y" // Replace with your Cloudinary upload preset
+        onSuccess={(result) => {
+          // const uploadedImageUrl = resource
+          setResource(result.info); // Set the uploaded image info in the state
+          // onChange(uploadedImageUrl); 
+        }}
+        onQueuesEnd={(result, { widget }) => {
+          widget.close();
+          result
+          // console.log(setResource)
+          
+        }}
+      >
+        {({ open }) => {
+          return (
+            <div
+            className='
+             relative
+              cursor-pointer
+              transition
+              border-dashed
+              border-2
+              p-20
+              border-neutral-300
+              flex
+              flex-col
+              justify-center
+              items-center
+              gap-4
+              text-neutral-600
+              rounded-md
+            '
+            >
+               <TbPhotoPlus size={50}
+               onClick={() => {
+                 open()
+               } 
+              }
+               />
             <div className='font-semibold text-lg'>
-              Click to Upload
-            </div>
-            {
-              value &&  (
-                <div className='absolute inset-0 w-full h-full'>
-                  <Image
-                  alt='Upload'
-                  fill
-                  style={{objectFit: 'cover'}}
-                  src={value}
-                  />
-
+             
+              <button
+                onClick={() => {
+                  setResource(null); // Clear the current resource if needed
+                  open(); // Open the Cloudinary upload widget
+                }}
+                className="font-semibold text-lg"
+                >
+                Click to Upload
+              </button>
                 </div>
-              )
-            }
-
-          </div>
-        )
-      }}
+              {resource && (
+                <div className="absolute inset-0 w-full h-full">
+                  <Image
+                    alt="Uploaded Image"
+                    
+                    style={{ objectFit: 'cover' }}
+                    src={resource.secure_url} 
+                   fill
+                    className='rounded-md'  
+                    // Use the secure_url from the uploaded image data
+                  />
+                </div>
+              )}
+            </div>
+          );
+        }}
       </CldUploadWidget>
-  )
-}
-
-export default ImageUpload
-
-
-
-// 'use client'
-// import React, { useCallback } from 'react';
-// import { CldUploadWidget } from "next-cloudinary";
-// import Image from "next/image";
-// import { TbPhotoPlus } from "react-icons/tb";
-
-// declare global {
-//   var cloudinary: any;
-// }
-
-// interface ImageUploadProps {
-//   onChange: (value: string) => void;
-//   value: string;
-// }
-
-// const ImageUpload: React.FC<ImageUploadProps> = ({
-//   onChange,
-//   value
-// }) => {
-
-//   const handleUpload = useCallback((result: any) => {
-//     onChange(result.info.secure_url);
-//   }, [onChange]);
-
-//   return (
-//     <CldUploadWidget
-//       onUpload={handleUpload}
-//       uploadPreset='your-upload-preset-name'  // Add your Cloudinary preset name here
-//       options={{
-//         maxFiles: 1
-//       }}
-//     >
-//       {({ open }) => {
-//         return (
-//           <div
-//             onClick={() => open?.()}
-//             className='
-//             relative
-//             cursor-pointer
-//             transition
-//             border-dashed
-//             border-2
-//             p-20
-//             border-neutral-300
-//             flex
-//             flex-col
-//             justify-center
-//             items-center
-//             gap-4
-//             text-neutral-600'
-//           >
-//             <TbPhotoPlus size={50} />
-//             <div className='font-semibold text-lg'>
-//               Click to Upload
-//             </div>
-//             {value && (
-//               <div className='absolute inset-0 w-full h-full'>
-//                 <Image
-//                   alt='Upload'
-//                   fill
-//                   style={{ objectFit: 'cover' }}
-//                   src={value}
-//                 />
-//               </div>
-//             )}
-//           </div>
-//         );
-//       }}
-//     </CldUploadWidget>
-//   );
-// }
-
-// export default ImageUpload;
+    </div>
+  );
+};
+export default ImageUpload;
