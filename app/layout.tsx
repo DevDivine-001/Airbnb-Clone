@@ -9,6 +9,7 @@ import ToasterProvider from "./providers/ToasterProvider";
 import LoginModal from "./components/modals/LoginModal";
 import getCurrentUser from "./actions/getCurrentUser";
 import RentModal from "./components/modals/RentModal";
+// import ClientOnly from "./components/ClientOnly";
 // import Openpages from "./components/Openpages";
 
 
@@ -16,6 +17,10 @@ import RentModal from "./components/modals/RentModal";
 export const metadata: Metadata = {
   title: "Airbnb Webapp",
   description: "Airbnb clone ",
+
+  icons:{
+    icon:"../../public/image/logo.png"
+  }
 };
 
 const font = Nunito({
@@ -42,8 +47,11 @@ export default async function RootLayout({
          <RegisterModal/>
          <Navbar currentUser={currentUser}/>
        {/* </ClientOnly> */}
-        
-        {children}</body>
+        <div className="pb-20 pt-28">
+        {children}
+
+        </div>
+        </body>
     </html>
   );
 }

@@ -18,15 +18,16 @@ const ImageUpload:React.FC<ImageUploadProps> = ({
   
 }) => {
   const [resource, setResource] = useState<any>(null); // State to hold the uploaded image data
+  console.log(!value)
 
   return (
     <div>
       <CldUploadWidget
         uploadPreset="dzbm3p1y" // Replace with your Cloudinary upload preset
         onSuccess={(result) => {
-          // const uploadedImageUrl = resource
+         const uploadedImageUrl = result.info.secure_url;
           setResource(result.info); // Set the uploaded image info in the state
-          // onChange(uploadedImageUrl); 
+          onChange(uploadedImageUrl); 
         }}
         onQueuesEnd={(result, { widget }) => {
           widget.close();
