@@ -1,12 +1,16 @@
+import { getListings } from "./actions/getLisitings"
 import ClientOnly from "./components/ClientOnly"
 import Container from "./components/Container"
 import EmptyState from "./components/EmptyState"
+import ListingCard from "./components/Lisitings/ListingCard"
 
-const page = () => {
+const page = async () => {
 
-  const isEmpty = true
+  const listings = await getListings()
 
-  if(isEmpty){
+  // const isEmpty = true
+
+  if(listings.length == 0){
   return(
       <ClientOnly>
       <EmptyState showReset/>
@@ -26,7 +30,16 @@ const page = () => {
     xl:grid-cols-5
     2xl:grid-cols-6
     gap-8'>
-      <div>My future listings</div>
+      {listings.map((listing:any) =>{
+        return(
+          <ListingCard
+          key={listing.id}
+            data={listing}
+         />
+
+       
+        )
+      })}
     </div>
     </Container>
     </ClientOnly>
