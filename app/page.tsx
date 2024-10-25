@@ -1,3 +1,4 @@
+import getCurrentUser from "./actions/getCurrentUser"
 import { getListings } from "./actions/getLisitings"
 import ClientOnly from "./components/ClientOnly"
 import Container from "./components/Container"
@@ -7,6 +8,7 @@ import ListingCard from "./components/Lisitings/ListingCard"
 const page = async () => {
 
   const listings = await getListings()
+  const currentUser = await getCurrentUser()
 
   // const isEmpty = true
 
@@ -33,8 +35,10 @@ const page = async () => {
       {listings.map((listing:any) =>{
         return(
           <ListingCard
+          currentUser={currentUser}
           key={listing.id}
             data={listing}
+            disabled   
          />
 
        
