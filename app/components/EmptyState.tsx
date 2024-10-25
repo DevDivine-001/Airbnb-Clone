@@ -4,6 +4,7 @@ import React from 'react'
 
 import { useRouter} from "next/navigation"
 import Heading from './Heading'
+import Button from './Button'
 
 interface EmptyState{
     title?: string,
@@ -24,16 +25,24 @@ showReset
     gap-2
     justify-center
     items-center
-    
-    
-    
     '>
-
         <Heading 
         title={title}
         subtitle={subtitle}
         />
+        <div>
+            {
+                showReset && (
+                    <Button
+                    onClick={() => router.push('/')}
+                    label='Remove all filters'
+                    outline
+                    />
+                )
+            }
+        </div>
     </div>
+
   )
 }
 
