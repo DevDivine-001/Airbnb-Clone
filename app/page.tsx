@@ -1,7 +1,18 @@
 import ClientOnly from "./components/ClientOnly"
 import Container from "./components/Container"
+import EmptyState from "./components/EmptyState"
 
 const page = () => {
+
+  const isEmpty = true
+
+  if(isEmpty){
+  return(
+      <ClientOnly>
+      <EmptyState/>
+    </ClientOnly>
+  )
+  }
   return (
     <ClientOnly>
       <Container>
