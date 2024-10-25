@@ -9,7 +9,7 @@ const page = () => {
   if(isEmpty){
   return(
       <ClientOnly>
-      <EmptyState/>
+      <EmptyState showReset/>
     </ClientOnly>
   )
   }

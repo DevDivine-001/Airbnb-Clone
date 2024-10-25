@@ -9,7 +9,7 @@ import Button from './Button'
 interface EmptyState{
     title?: string,
     subtitle?: string,
-    showReset?: string,
+    showReset?: boolean,
 }
 const EmptyState: React.FC <EmptyState>= ({
 title= "No exact matches",
@@ -21,16 +21,17 @@ showReset
     <div className='
     h-[60vh]
     flex
-    flex-col
+   flex-col
     gap-2
     justify-center
     items-center
     '>
-        <Heading 
+           <Heading 
         title={title}
         subtitle={subtitle}
+        center
         />
-        <div>
+        <div className='w-48 mt-4'>
             {
                 showReset && (
                     <Button
