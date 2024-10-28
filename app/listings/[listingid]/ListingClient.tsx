@@ -4,8 +4,6 @@ import React, { useMemo } from 'react'
 
 import {Reservation} from "@prisma/client"
 
-
-
 import { SafeListing, SafeUser } from '@/app/types/inex'
 import { categories } from '@/app/components/navbar/Categories'
 import Container from '@/app/components/Container'

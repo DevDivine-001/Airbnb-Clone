@@ -1,39 +1,93 @@
 "use client"
 
-// import React from 'react';
-// import { SafeUser } from '@/app/types/inex';
-
-// interface ListingInfoProps {
-//   user: string | SafeUser; // Type definition for user
-//   category: string;
-//   description: string;
-//   roomCount: number;
-// }
-
-// const ListingInfo: React.FC<ListingInfoProps> = ({
-//   user,
-//   category,
-//   description,
-//   roomCount,
-// }) => {
-//   return (
-//     <div>
-//         ListingInfo
-//       {/* <p>User: {user.name}</p>
-//       <p>Category: {category}</p>
-//       <p>Description: {description}</p>
-//       <p>Room Count: {roomCount}</p> */}
-//     </div>
-//   );
-// };
-
-// export default ListingInfo;
-
+import { SafeUser } from '@/app/types/inex'
 import React from 'react'
+import { IconType } from 'react-icons'
+import useCountries from '../hooks/useCountries'
+import Avatar from '../Avatar'
+import ListingCategory from './ListingCategory'
+import dynamic from 'next/dynamic'
 
-const ListingInfo = () => {
+const Map = dynamic(() => import("../Map"),{
+    ssr: false
+})
+interface ListingInfoProps{
+    user: SafeUser,
+    description: string,
+    guestCount: number,
+    roomCount: number,
+    bathroomCount: number,
+    category:{
+        icon: IconType,
+        label: string,
+        description: string,
+
+    } | undefined
+    locationValue: string,
+}
+
+const ListingInfo: React.FC<ListingInfoProps> = ({
+    user,
+    description,
+    guestCount,
+    roomCount,
+    category,
+    bathroomCount,
+    locationValue
+
+
+}) => {
+    const { getByValue} = useCountries()
+
+    const coordinates = getByValue(locationValue)?.latlng
   return (
-    <div>ListingInfo</div>
+    <div className='col-span-4 flex flex-col gap-8'>
+        <div className='flex flex-col gap-2'>
+            <div className='
+            text-xl
+            font-semibold
+            flex
+            flex-row
+            items-center
+            gap-2'>
+                <div>Hosted by {user?.name}</div>
+                <Avatar
+                src={user?.image}
+                />
+                 </div>
+                 <div
+                 className='flex text-silver font-light gap-4 items-center
+                 flex-row'>
+                    <div>
+                        {guestCount} guests
+                    </div>
+                    <div>
+                        {roomCount} rooms
+                    </div>
+                    <div>
+                        {bathroomCount} bathrooms
+                    </div>
+                 </div>
+                 
+
+        </div>
+        <hr/>
+        {
+            category && (
+                <ListingCategory
+                icon={category.icon}
+                label={category.label}
+                description={category.description}
+                />
+            )
+        }
+        <hr/>
+        <div className='text-lg font-light text-neutral-300 cursor-pointer'>
+            {description}
+        </div>
+        <hr/>
+        <Map center={coordinates} />
+    </div>
   )
 }
 

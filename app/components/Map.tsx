@@ -48,6 +48,7 @@ const Map: React.FC<MapProps> = ({ center }) => {
   return (
     <MapContainer
       className="h-[40vh] rounded-lg border-none"
+      
       // You can set the scrollWheelZoom option here if using the right version
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
