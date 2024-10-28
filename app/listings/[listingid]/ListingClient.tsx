@@ -10,6 +10,7 @@ import { SafeListing, SafeUser } from '@/app/types/inex'
 import { categories } from '@/app/components/navbar/Categories'
 import Container from '@/app/components/Container'
 import ListingHead from '@/app/components/Lisitings/ListingHead'
+import ListingInfo from '@/app/components/Lisitings/ListingInfo'
 
 interface ListingClientProps{
     reservations?: Reservation[]
@@ -39,6 +40,14 @@ return categories.find((item) => item.label == listing.category)
         currentUser={currentUser}
         
         />
+        <div className='grid
+        grid-cols-1
+        md:grid-cols-7
+        md:grid-10
+        mt-6'>
+
+        </div>
+        <ListingInfo/>
 
 
             {/* <h1>{listing.title}</h1>
