@@ -56,7 +56,7 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
                 />
                  </div>
                  <div
-                 className='flex text-silver font-light gap-4 items-center
+                 className='flex text-neutral-500 font-light gap-4 items-center
                  flex-row'>
                     <div>
                         {guestCount} guests
@@ -82,7 +82,7 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
             )
         }
         <hr/>
-        <div className='text-lg font-light text-neutral-300 cursor-pointer'>
+        <div className='text-lg font-light text-neutral-500 cursor-pointer'>
             {description}
         </div>
         <hr/>
