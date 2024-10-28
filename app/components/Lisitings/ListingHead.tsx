@@ -4,13 +4,14 @@ import useCountries from '../hooks/useCountries'
 import Heading from '../Heading'
 import Image from 'next/image'
 import HeartButton from '../HeartButton'
+import ListingInfo from './ListingInfo'
 
 interface ListingHeadProps{
     title: string
     locationValue: string,
     imageSrc: string,
     id: string,
-    currentUser?: SafeUser | null
+    currentUser?: SafeUser | null | any
 } 
 
 
@@ -19,7 +20,7 @@ const ListingHead: React.FC<ListingHeadProps> = ({
     locationValue,
     imageSrc,
     id,
-    currentUser
+    currentUser,
 }) => {
     const { getByValue} = useCountries()
 
@@ -48,6 +49,8 @@ subtitle={`${location?.region},${location?.label}`}
             currentUser={currentUser}
            
             />
+
+           <div></div>
         </div>
 
     </div>

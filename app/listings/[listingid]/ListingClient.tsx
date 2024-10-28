@@ -13,7 +13,7 @@ import ListingHead from '@/app/components/Lisitings/ListingHead'
 
 interface ListingClientProps{
     reservations?: Reservation[]
-    listing: any | SafeListing &{
+    listing:  | any| SafeListing &{
         user: SafeUser
     }
 currentUser?: SafeUser | null
@@ -39,6 +39,8 @@ return categories.find((item) => item.label == listing.category)
         currentUser={currentUser}
         
         />
+
+
             {/* <h1>{listing.title}</h1>
             <p>{listing.description}</p>
             <p>Listed by: {listing.user.name}</p> */}
