@@ -118,9 +118,8 @@ const ListingClient: React.FC<ListingClientProps> = ({
                         id={listing.id}
                         currentUser={currentUser}
                     />
-                    <div className='grid grid-cols-1 md:grid-cols-7 md:grid-10 mt-6'>
-                        {/* Additional content can be added here if needed */}
-                    </div>
+                    <div className='grid grid-cols-1 md:grid-cols-7 md:grid-10 mt-6 md:gap-10'>
+                     
                     <ListingInfo
                         user={listing.user}
                         category={category}
@@ -130,6 +129,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
                         bathroomCount={listing.bathroomCount}
                         locationValue={listing.locationValues}
                     />
+                    
                     <div className='order-first mb-10 md:order-last md:col-span-3'>
                         <ListingReservation
                             price={listing.price}
@@ -139,8 +139,9 @@ const ListingClient: React.FC<ListingClientProps> = ({
                             onSubmit={onCreateReservation}
                             disabled={isLoading}
                             disabledDates={disabledDates} // Pass disabled dates
-                        />
-                    </div>
+                            />
+                            </div>
+                            </div>
                 </div>
             </div>
         </Container>
