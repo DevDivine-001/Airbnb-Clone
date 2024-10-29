@@ -23,7 +23,7 @@ interface ListingInfoProps{
         description: string,
 
     } | undefined
-    locationValue: string,
+    locationValue: string | any,
 }
 
 const ListingInfo: React.FC<ListingInfoProps> = ({
