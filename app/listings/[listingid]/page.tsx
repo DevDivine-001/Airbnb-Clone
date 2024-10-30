@@ -3,6 +3,7 @@ import ClientOnly from '@/app/components/ClientOnly';
 import EmptyState from '@/app/components/EmptyState';
 import ListingClient from './ListingClient';
 import getCurrentUser from '@/app/actions/getCurrentUser';
+import getReservations from '@/app/actions/getReservations';
 
 interface ListingPageProps {
     params: { listingid: string }; // Define the type of params
@@ -12,6 +13,8 @@ const ListingPage = async ({ params }: ListingPageProps) => {
     const { listingid } = params; // Extract listingid from params
 
     const listing = await getListingById({ listingId:listingid }); 
+    // const reservations = await getReservations(params)
+    const reservations = await getReservations({listingId:listingid})
     const currentUser = await getCurrentUser()
 
     // Ensure the listing ID is valid
@@ -26,6 +29,7 @@ const ListingPage = async ({ params }: ListingPageProps) => {
 
               <ListingClient
             listing={listing}
+            reservations={reservations}
             currentUser={currentUser}
             /> 
 
