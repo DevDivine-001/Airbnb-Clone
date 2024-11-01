@@ -111,13 +111,13 @@ md:block"
                 <MenuItem onClick={() => route.push('/trips')}
 label="My trips"
 />
-<MenuItem onClick={() => {}}
+<MenuItem onClick={() => route.push('/favorites')}
 label="My favorites"
 />
-<MenuItem onClick={() => {}}
+<MenuItem onClick={() => route.push('/reservations')}
 label="My reservations"
 />
-<MenuItem onClick={() => {}}
+<MenuItem onClick={() => route.push("/properties")}
 label="My properties"
 />
 <MenuItem onClick={rentModal.onOpen}

@@ -6,17 +6,17 @@
 // import { useRouter } from 'next/navigation';
 // import axios from 'axios';
 // import toast from 'react-hot-toast';
-// import { SafeReservation, SafeUser } from '../types/inex';
+// import { SafeListing, SafeReservation, SafeUser } from '../types/inex';
 // import ListingCard from '../components/Lisitings/ListingCard';
 // // import ListingCard from '../components/Listings/ListingCard';
 
-// interface TripsClientProps {
-//   reservations: SafeReservation[];
+// interface PropertiesClientProps {
+//   listings: SafeListing[];
 //   currentUser?: SafeUser | null;
 // }
 
-// const TripsClient: React.FC<TripsClientProps> = ({
-//   reservations,
+// const TripsClient: React.FC<PropertiesClientProps> = ({
+//   listings,
 //   currentUser,
 // }) => {
 //   const router = useRouter();
@@ -27,9 +27,9 @@
 //       setDeletingId(id);
 
 //       axios
-//         .delete(`/api/reservations/${id}`)
+//         .delete(`/api/listings/${id}`)
 //         .then(() => {
-//           toast.success('Reservation cancelled');
+//           toast.success('Listing deleted');
 //           router.refresh();
 //         })
 //         .catch((error) => {
@@ -44,7 +44,7 @@
 
 //   return (
 //     <Container>
-//       <Heading title="Trips" subtitle="Where you've been and where you're going" />
+//       <Heading title="Properties" subtitle="List of your properties" />
 //       <div
 //         className="
 //           mt-10
@@ -57,15 +57,14 @@
 //           2xl:grid-cols-6
 //           gap-8"
 //       >
-//         {reservations.map((reservation) => (
+//         {listings.map((listing) => (
 //           <ListingCard
-//             key={reservation.id}
-//             data={reservation.listing}
-//             reservation={reservation}
-//             actionId={reservation.id}
+//             key={listing.id}
+//             data={listing}
+//             actionId={listing.id}
 //             onAction={onCancel}
-//             disabled={deletingId === reservation.id}
-//             actionLabel="Cancel reservation"
+//             disabled={deletingId === listing.id}
+//             actionLabel="Delete property"
 //             currentUser={currentUser}
 //           />
 //         ))}

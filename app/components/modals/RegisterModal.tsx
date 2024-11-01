@@ -17,6 +17,7 @@ import Button from "../Button";
 import { FcGoogle } from "react-icons/fc";
 import { AiFillGithub } from "react-icons/ai";
 import { signIn } from "next-auth/react";
+import LoginModal from "./LoginModal";
 // import LoginModal from "./LoginModal";
 
 const RegisterModal = () => {
@@ -44,6 +45,7 @@ const RegisterModal = () => {
       .then(() => {
         toast.success('Successfully registered!');
         registerModal.onClose();
+        loginModal.onOpen()
       })
       .catch((error) => {
         if (error.response?.status === 400) {

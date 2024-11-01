@@ -1,13 +1,14 @@
 // import getCurrentUser from "../actions/getCurrentUser"
-// import getReservations from "../actions/getReservations"
+// import { getListings } from "../actions/getLisitings"
 // import ClientOnly from "../components/ClientOnly"
 // import EmptyState from "../components/EmptyState"
-// import TripsClient from "./TripsClient"
+// import PropertiesClient from "./PropertiesClient"
 
 
 
 
-// const TripsPages = async () =>{
+// const PropertiesPage
+//  = async () =>{
 //     const currentUser = await getCurrentUser()
     
 //     if(!currentUser){
@@ -23,16 +24,16 @@
 //     )
 //     }
 
-// const reservations = await getReservations({
+// const listings = await getListings({
 //     userId: currentUser.id
 // })
 
-// if(reservations.length == 0 ){
+// if(listings.length == 0 ){
 //     return(
 //         <ClientOnly>
 //             <EmptyState
-//             title="No tips found"
-//             subtitle="Looks like you have not reserved any trips"
+//             title="No properties found"
+//             subtitle="Looks like you have no properties"
             
 //             />
 //         </ClientOnly>
@@ -41,8 +42,8 @@
 // }
 // return(
 //     <ClientOnly>
-//         <TripsClient
-//         reservations={reservations}
+//         <PropertiesClient
+//         listings={listings}
 //         currentUser={currentUser}
 //         />
 
@@ -50,4 +51,4 @@
 // )
 // }
 
-// export default TripsPages
+// export default PropertiesPage
