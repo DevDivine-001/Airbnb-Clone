@@ -9,6 +9,7 @@ import ToasterProvider from "./providers/ToasterProvider";
 import LoginModal from "./components/modals/LoginModal";
 import getCurrentUser from "./actions/getCurrentUser";
 import RentModal from "./components/modals/RentModal";
+import SearchModel from "./components/modals/SearchModel";
 // import ClientOnly from "./components/ClientOnly";
 // import Openpages from "./components/Openpages";
 
@@ -41,6 +42,7 @@ export default async function RootLayout({
        
         {/* <Modal title="Hello world"  isOpen actionLabel="Submit"/> */}
         <ToasterProvider/>
+        <SearchModel/>
         <RentModal/>
         {/* <Openpages/> */}
          <LoginModal/>
