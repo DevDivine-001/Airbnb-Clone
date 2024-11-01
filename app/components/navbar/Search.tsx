@@ -1,10 +1,16 @@
 'use client'
 
 import { BiSearch } from "react-icons/bi"
+import useSearchModel from "../hooks/useLSearchModal"
+
 
 const Search = () => {
+  const searchModel = useSearchModel()
   return (
-    <div className="
+    <div 
+  onClick={searchModel.onOpen}
+    
+    className="
     border-[1px]
     w-full
     md:w-auto
