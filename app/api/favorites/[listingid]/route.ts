@@ -35,6 +35,7 @@ export async function POST(request: Request, { params }: { params: { listingid: 
 
 
 export async function DELETE(request: Request, { params }: { params: { listingid: string } }) {
+    console.log(request)
     const currentUser = await getCurrentUser();
 
     if (!currentUser) {

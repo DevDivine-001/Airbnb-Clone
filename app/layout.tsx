@@ -10,8 +10,7 @@ import LoginModal from "./components/modals/LoginModal";
 import getCurrentUser from "./actions/getCurrentUser";
 import RentModal from "./components/modals/RentModal";
 import SearchModel from "./components/modals/SearchModel";
-// import ClientOnly from "./components/ClientOnly";
-// import Openpages from "./components/Openpages";
+import ClientOnly from "./components/ClientOnly";
 
 
 
@@ -38,17 +37,16 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-       {/* <ClientOnly> */}
+       <ClientOnly>
        
         {/* <Modal title="Hello world"  isOpen actionLabel="Submit"/> */}
         <ToasterProvider/>
         <SearchModel/>
         <RentModal/>
-        {/* <Openpages/> */}
          <LoginModal/>
          <RegisterModal/>
          <Navbar currentUser={currentUser}/>
-       {/* </ClientOnly> */}
+       </ClientOnly>
         <div className="pb-20 pt-28">
         {children}
 

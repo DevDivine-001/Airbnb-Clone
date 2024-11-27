@@ -17,7 +17,7 @@ L.Icon.Default.mergeOptions({
 });
 
 interface MapProps {
-  center?: [number, number]; // Typing center as an array of two numbers
+  center?: [number, number] | any; // Typing center as an array of two numbers
 }
 
 // Component to update the map's center and zoom programmatically
